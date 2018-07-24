@@ -1,0 +1,192 @@
+basePath: /V1
+consumes:
+- application/json
+- application/xml
+- application/gob
+- application/x-gob
+definitions:
+  CreateRestauranttypesPayload:
+    description: Restaurant Type
+    example:
+      id: Dolorem id corrupti atque.
+      name: Deleniti placeat voluptatem.
+    properties:
+      id:
+        description: Restaurant Type Id
+        example: Dolorem id corrupti atque.
+        type: string
+      name:
+        description: Restaurant Type Name
+        example: Deleniti placeat voluptatem.
+        type: string
+    required:
+    - id
+    - name
+    title: CreateRestauranttypesPayload
+    type: object
+  Restauranttype:
+    description: Restaurant Type (default view)
+    example:
+      id: Dolorem id corrupti atque.
+      name: Deleniti placeat voluptatem.
+    properties:
+      id:
+        description: Restaurant Type Id
+        example: Dolorem id corrupti atque.
+        type: string
+      name:
+        description: Restaurant Type Name
+        example: Deleniti placeat voluptatem.
+        type: string
+    required:
+    - id
+    - name
+    title: 'Mediatype identifier: application/vnd.restauranttype+json; view=default'
+    type: object
+  RestauranttypeCollection:
+    description: RestauranttypeCollection is the media type for an array of Restauranttype
+      (default view)
+    example:
+    - id: Dolorem id corrupti atque.
+      name: Deleniti placeat voluptatem.
+    items:
+      $ref: '#/definitions/Restauranttype'
+    title: 'Mediatype identifier: application/vnd.restauranttype+json; type=collection;
+      view=default'
+    type: array
+  UpdateRestauranttypesPayload:
+    description: Restaurant Type
+    example:
+      id: Dolorem id corrupti atque.
+      name: Deleniti placeat voluptatem.
+    properties:
+      id:
+        description: Restaurant Type Id
+        example: Dolorem id corrupti atque.
+        type: string
+      name:
+        description: Restaurant Type Name
+        example: Deleniti placeat voluptatem.
+        type: string
+    required:
+    - id
+    - name
+    title: UpdateRestauranttypesPayload
+    type: object
+host: localhost:8080
+info:
+  description: RestaurantType API with GOA
+  title: The RestaurantType API
+  version: "1.0"
+paths:
+  /restauranttypes/:
+    get:
+      operationId: restauranttypes#list
+      produces:
+      - application/vnd.restauranttype+json; type=collection
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/RestauranttypeCollection'
+      schemes:
+      - http
+      summary: list restauranttypes
+      tags:
+      - restauranttypes
+    post:
+      operationId: restauranttypes#create
+      parameters:
+      - description: Restaurant Type
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/CreateRestauranttypesPayload'
+      responses:
+        "201":
+          description: Created
+      schemes:
+      - http
+      summary: create restauranttypes
+      tags:
+      - restauranttypes
+    put:
+      operationId: restauranttypes#update
+      parameters:
+      - description: Restaurant Type
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/UpdateRestauranttypesPayload'
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: update restauranttypes
+      tags:
+      - restauranttypes
+  /restauranttypes/{id}:
+    delete:
+      operationId: restauranttypes#delete
+      parameters:
+      - description: Restaurant Type Index
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: delete restauranttypes
+      tags:
+      - restauranttypes
+    get:
+      operationId: restauranttypes#get
+      parameters:
+      - description: Restaurant Type Index
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/vnd.restauranttype+json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Restauranttype'
+        "404":
+          description: Not Found
+      schemes:
+      - http
+      summary: get restauranttypes
+      tags:
+      - restauranttypes
+produces:
+- application/json
+- application/xml
+- application/gob
+- application/x-gob
+responses:
+  Created:
+    description: Created
+  NotFound:
+    description: Not Found
+  OK:
+    description: OK
+schemes:
+- http
+swagger: "2.0"

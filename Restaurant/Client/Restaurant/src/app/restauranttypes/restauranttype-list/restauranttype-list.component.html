@@ -1,0 +1,14 @@
+<table class="table table-sm table-hover">
+  <tr *ngFor="let restauranttype of restauranttypeService.restauranttypeList">
+    <td>{{restauranttype.id}}</td>
+    <td>{{restauranttype.name}}</td>
+    <td>
+      <a class="btn" (click)="showForEdit(restauranttype)">
+        <i class="fa fa-pencil-square-o">View</i>
+      </a>
+      <a class="btn text-danger" (click)="onDelete(restauranttype.id)">
+        <i class="fa fa-trash-o">Delete</i>
+      </a>
+    </td>
+  </tr>
+</table>
