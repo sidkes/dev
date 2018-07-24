@@ -1,0 +1,10 @@
+
+
+
+
+
+CREATE INDEX `ix_type` ON `UBookBucket`(`type`)
+
+CREATE INDEX `ix_id` ON `UBookBucket`(`id`)
+
+CREATE PRIMARY INDEX `#primary` ON `UBookBucket`
